@@ -17,7 +17,7 @@ def webhook():
 
     if chat_id and text:
         answer = f"پیام شما دریافت شد: {text}"
-        url = f"https://tapi.bale.ai/bot<YOUR_TOKEN>/sendMessage"
+        url = f"https://tapi.bale.ai/bot1353714060:HcnS6jUAdQGVKu1FwRsRtCA15ZrJjMYfuFH5vmCa/sendMessage"
         requests.post(url, json={"chat_id": chat_id, "text": answer})
 
     return "ok", 200
