@@ -1,4 +1,5 @@
 from flask import Flask, request
+import requests
 
 app = Flask(__name__)
 
@@ -10,12 +11,16 @@ def index():
 def webhook():
     data = request.json
     print("پیام دریافت شد:", data)
-    # اینجا می‌تونی کد پردازش پیام رو بنویسی
+
+    chat_id = data.get("message", {}).get("chat", {}).get("id")
+    text = data.get("message", {}).get("text", "")
+
+    if chat_id and text:
+        answer = f"پیام شما دریافت شد: {text}"
+        url = f"https://tapi.bale.ai/bot<YOUR_TOKEN>/sendMessage"
+        requests.post(url, json={"chat_id": chat_id, "text": answer})
+
     return "ok", 200
 
 if __name__ == "__main__":
-    # روی پورت 10000 اجرا می‌کنیم چون Render همین پورت رو قبول داره
-    import os
-
-port = int(os.environ.get("PORT", 5000))
-app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=10000)
