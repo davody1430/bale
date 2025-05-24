@@ -15,4 +15,7 @@ def webhook():
 
 if __name__ == "__main__":
     # روی پورت 10000 اجرا می‌کنیم چون Render همین پورت رو قبول داره
-    app.run(host="0.0.0.0", port=10000)
+    import os
+
+port = int(os.environ.get("PORT", 5000))
+app.run(host="0.0.0.0", port=port)
