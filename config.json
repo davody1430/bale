@@ -1,0 +1,7 @@
+{
+    "BOT_TOKEN": "1353714060:کلید-ربات-شما",
+    "OPENAI_API_KEY": "sk-کلید-openai-شما",
+    "USE_AI": true,
+    "ADMIN_IDS": [123456789],
+    "MAX_TOKENS": 500
+}
